@@ -22,7 +22,9 @@ Sample names will be like "Sample{a number btw 0 and # of samples}"
 
 In the visualization page you need to select an experiment. Then, you'll type some text to search genes. Because of the naming of the genes in the mock data, you can enter some numbers and select more than one genes in the dropdows.
 
-After selecting genes, you need o click on "Get Gene Data" button. This will get the expression values for the genes. Then, you can click on analyze button for the genes in the table. You will see the statistics and a bar chart for expression values.
+After selecting genes, you need o click on "Get Gene Data" button. This will get the expression values for the genes. The system will draw an heatmap for the selected genes, too.
+
+Once you click on analyze button for the genes in the table, you will see the statistics and a skatter plot for expression values.
 
 ## Mock Data
 
