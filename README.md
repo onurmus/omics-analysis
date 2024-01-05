@@ -2,15 +2,15 @@
 
 This project consists of a backend and a frontend project namely omics-api and omics-fe. Omics API is a NestJs application and FE is a react app.
 
-These projects are independent so you can run them intependently. Please checkout projects' individual details for installation and run.
+These projects are independent so you can run them independently. Please check the projects' details for installation and run.
 
 ## Flow
 
-In the application UI, you have two links, "Gene Visualization" and "Create Experiment" in the header. To create a dummy data, please enter page "Create Experiment".
+In the application UI, you have two links, "Gene Visualization" and "Create Experiment" in the header. To create dummy data, please enter the page "Create Experiment".
 
 ### Create Experiment
 
-In this page, you need to fill Experiment name, number of samples, Number of Genes and Outlier ratio fields. When you click on "Create mock data" backend service will generate a mock data based on parameters you provided.
+On this page, you must fill Experiment name, number of samples, Number of Genes, and Outlier ratio fields. When you click on "Create mock data" the backend service will generate mock data based on the parameters you provided.
 
 The mock data will generate expression values between 120 and 150. However, to generate some outliers, with the probability of outlearRatio, it'll generate expression values between 1 and 190.
 
@@ -20,19 +20,21 @@ Sample names will be like "Sample{a number btw 0 and # of samples}"
 
 ### Visualization
 
-In the visualization page you need to select an experiment. Then you have two options:
+On the visualization page, you need to select an experiment. Then you have two options:
 
 #### Get Outliers
 
-There is a simple service which calculates outliers based on z-score threshold. You can set a z-score threshold and click on `Get Outliers` button. Once you clicked, you will see a table showing genes having outliers and samples giving outliers.
+There is a simple service that calculates outliers based on a z-score threshold. You can set a z-score threshold and click on the `Get Outliers` button. Once you click, you will see a table showing genes with outliers and samples having outliers.
 
-#### Visualize Gene Expression Data
+This functionality is not designed for handling big data. We can use some ML algorithms and an asynchronous mechanism to find better outliers.
 
-Under Outliers table, you can visualize gene expression data. You need to type some text to search genes. Because of the naming of the genes in the mock data, you can enter some numbers and select more than one genes in the dropdows.
+#### Visualize Gene Expression Data
 
-After selecting genes, you need o click on "Get Gene Data" button. This will get the expression values for the genes. The system will draw an heatmap for the selected genes, too.
+Under the Outliers table, you can visualize gene expression data. It would be best if you typed some text to search genes. Because of the naming of the genes in the mock data, you can enter some numbers and select more than one gene in the dropdowns.
 
-Once you click on analyze button for the genes in the table, you will see the statistics and a skatter plot for expression values.
+After selecting genes, you need to click on the "Get Gene Data" button. This will get the expression values for the genes. The system will draw a heatmap for the selected genes, too.
+
+Once you click on the analyze button for the genes in the table, you will see the statistics and a scatter plot for expression values.
 
 ## Mock Data
 
