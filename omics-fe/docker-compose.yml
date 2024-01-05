@@ -1,4 +1,4 @@
-version: "3.7"
+version: '3.7'
 
 services:
   omicsfe:
@@ -12,6 +12,8 @@ services:
     ports:
       - ${REACT_APP_PORT}:3000
     command: npm start
+    environment:
+      - REACT_APP_BACKEND_ENDPOINT=http://y.xyz.com
     env_file:
       - .env
     networks:

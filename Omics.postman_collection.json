@@ -1,0 +1,115 @@
+{
+  "info": {
+    "_postman_id": "28a5a5c7-78eb-4560-b60c-8e5a5c794ec9",
+    "name": "Omics",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Mock Data",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"experimentName\": \"dummy\",\n    \"numberOfSamples\": 6,\n    \"numberOfGenes\": 1000,\n    \"wideRangeExpressionRatio\": 0.01\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "{{base_url}}/mocking"
+      },
+      "response": []
+    },
+    {
+      "name": "Search By Name",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/gene/search/1/436"
+      },
+      "response": []
+    },
+    {
+      "name": "Get Experiments",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/experiment"
+      },
+      "response": []
+    },
+    {
+      "name": "Get Genes By Name",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/gene/by-name/1?ids=Gene9406,Gene20057",
+          "host": ["{{base_url}}"],
+          "path": ["gene", "by-name", "1"],
+          "query": [
+            {
+              "key": "ids",
+              "value": "Gene9406,Gene20057"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Genes By Ids",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/gene/by-id?ids=1,2",
+          "host": ["{{base_url}}"],
+          "path": ["gene", "by-id"],
+          "query": [
+            {
+              "key": "ids",
+              "value": "1,2"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Gene Stats",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/gene/stats/1"
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3006",
+      "type": "string"
+    }
+  ]
+}

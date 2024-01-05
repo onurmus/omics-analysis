@@ -11,6 +11,8 @@ services:
       - ${SERVER_PORT}:${SERVER_PORT}
       - 9230:9230
     command: npm run start:dev # change start:dev with start:debug for debugging
+    environment:
+      - FRONT_END_URL=http://y.xyz.com
     env_file:
       - .env
     networks:
