@@ -1,11 +1,12 @@
 import React, { useState, useMemo } from 'react';
-import { Row, Table } from 'antd';
+import { Col, Row, Table } from 'antd';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { calculateGeneStats, setSelectedGene } from '../../../store/omics-visualization-slice';
 import { Gene, SampleExpressionValues } from '../../interfaces/gene';
 import { AreaChartOutlined } from '@ant-design/icons';
 import { StatsModal } from '../StatsModal/StatsModal';
 import GeneExpressionChart from '../GeneExpressionChart/GeneExpressionChart';
+import GeneHeatmap from '../GeneHeatmap/GeneHeatmap';
 
 const GeneTable = () => {
   const dispatch = useAppDispatch();
@@ -46,7 +47,10 @@ const GeneTable = () => {
 
   return (
     <>
-      <Row className='custom-row'>{!!geneData.length && <Table rowKey='id' columns={columns} dataSource={geneData} />}</Row>
+      <Row className='custom-row'>
+        <Col span={24}>{!!geneData.length && <Table rowKey='id' columns={columns} dataSource={geneData} />}</Col>
+        <Col span={24}>{!!geneData.length && <GeneHeatmap></GeneHeatmap>}</Col>
+      </Row>
       <Row className='custom-row'>{showChart && <GeneExpressionChart></GeneExpressionChart>} </Row>
       <Row>{showStatsModal && <StatsModal show={showStatsModal} handleClose={() => setShowStatsModal(false)}></StatsModal>}</Row>
     </>
