@@ -1,0 +1,36 @@
+services:
+  omicsapi:
+    container_name: omicsapi
+    build:
+      context: .
+      target: development
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+      - 9230:9230
+    command: npm run start:dev # change start:dev with start:debug for debugging
+    env_file:
+      - .env
+    networks:
+      - viascientific
+  postgresql:
+    container_name: postgresql
+    image: postgres:13
+    networks:
+      - viascientific
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_DB: ${DB_DATABASE_NAME}
+      PG_DATA: /var/lib/postgresql/data
+    ports:
+      - ${DB_PORT}:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+networks:
+  viascientific:
+    name: viascientific
+volumes:
+  pgdata:

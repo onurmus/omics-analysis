@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Col, Row, Table } from 'antd';
+import { Row, Table } from 'antd';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { calculateGeneStats, setSelectedGene } from '../../../store/omics-visualization-slice';
 import { Gene, SampleExpressionValues } from '../../interfaces/gene';

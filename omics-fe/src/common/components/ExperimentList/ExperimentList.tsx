@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Select } from 'antd';
-import { getAllExperiments, reset, setSelectedExperiment } from '../../../store/omics-visualization-slice';
+import { getAllExperiments, setSelectedExperiment } from '../../../store/omics-visualization-slice';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 
 const ExperimentList = () => {

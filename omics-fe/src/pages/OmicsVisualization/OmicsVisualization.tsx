@@ -1,23 +1,15 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import GeneSearch from '../../common/components/GeneSearch/GeneSearch';
 import { Button, Col, Row } from 'antd';
 import ExperimentList from '../../common/components/ExperimentList/ExperimentList';
 import './OmicsVisualization.css';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { getGeneData, reset } from '../../store/omics-visualization-slice';
+import { getGeneData } from '../../store/omics-visualization-slice';
 import GeneTable from '../../common/components/GeneTable/GeneTable';
 
 const OmicsVisualization = () => {
   const dispatch = useAppDispatch();
   const { selectedGenes, selectedExperiment, loading } = useAppSelector((state) => state.omicsVisualization);
-
-  useEffect(() => {
-    console.log('changed experimend');
-    console.log(selectedExperiment);
-    if (selectedExperiment) {
-      //dispatch(reset());
-    }
-  }, [dispatch, selectedExperiment]);
 
   const handleButtonClick = () => {
     dispatch(getGeneData({ selectedGenes }));

@@ -8,7 +8,6 @@ const CreateExperiment = () => {
   const [form] = Form.useForm();
 
   const onFinish = async (values: any) => {
-    console.log('Received values from form: ', values);
     try {
       const response = await axios.post(`${process.env.REACT_APP_BACKEND_ENDPOINT}/mocking`, values);
       Notification.info(response.data, 'Created mock experiment');
