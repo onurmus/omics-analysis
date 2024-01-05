@@ -87,6 +87,15 @@
         "url": "{{base_url}}/gene/stats/1"
       },
       "response": []
+    },
+    {
+      "name": "Get Outliers",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/gene/stats/1"
+      },
+      "response": []
     }
   ],
   "event": [

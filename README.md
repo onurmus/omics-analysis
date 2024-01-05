@@ -20,7 +20,15 @@ Sample names will be like "Sample{a number btw 0 and # of samples}"
 
 ### Visualization
 
-In the visualization page you need to select an experiment. Then, you'll type some text to search genes. Because of the naming of the genes in the mock data, you can enter some numbers and select more than one genes in the dropdows.
+In the visualization page you need to select an experiment. Then you have two options:
+
+#### Get Outliers
+
+There is a simple service which calculates outliers based on z-score threshold. You can set a z-score threshold and click on `Get Outliers` button. Once you clicked, you will see a table showing genes having outliers and samples giving outliers.
+
+#### Visualize Gene Expression Data
+
+Under Outliers table, you can visualize gene expression data. You need to type some text to search genes. Because of the naming of the genes in the mock data, you can enter some numbers and select more than one genes in the dropdows.
 
 After selecting genes, you need o click on "Get Gene Data" button. This will get the expression values for the genes. The system will draw an heatmap for the selected genes, too.
 

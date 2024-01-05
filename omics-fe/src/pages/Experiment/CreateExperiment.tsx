@@ -1,4 +1,3 @@
-//TODO: implement
 import React from 'react';
 import { Button, Form, Input, InputNumber } from 'antd';
 import { Notification } from '../../common/utils/notification';

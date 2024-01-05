@@ -1,19 +1,15 @@
-import {
-  Body,
-  Controller,
-  Get,
-  Param,
-  ParseArrayPipe,
-  Post,
-  Query,
-} from '@nestjs/common';
+import { Controller, Get, Param, ParseArrayPipe, Query } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { GeneService } from './gene.service';
+import { GeneOutlierService } from './gene-outlier.service';
 
 @Controller('gene')
 @ApiTags('Gene')
 export class GeneController {
-  constructor(private readonly geneService: GeneService) {}
+  constructor(
+    private readonly geneService: GeneService,
+    private readonly geneOutlierService: GeneOutlierService,
+  ) {}
 
   @ApiOkResponse({
     description: 'Search genes by name in an experiment',
@@ -58,5 +54,19 @@ export class GeneController {
   @Get('/stats/:geneId')
   async getGeneStatistics(@Param('geneId') geneId: number) {
     return await this.geneService.getGeneStatistics(geneId);
+  }
+
+  @ApiOkResponse({
+    description: 'Get outliers for experiment for given Z-score threshold',
+  })
+  @Get('/outliers/:experimentId/:zthreshold')
+  async getOutliers(
+    @Param('experimentId') experimentId: number,
+    @Param('zthreshold') zThreshold: number,
+  ) {
+    return await this.geneOutlierService.findOutliersUsingStatistics(
+      experimentId,
+      zThreshold,
+    );
   }
 }

@@ -35,4 +35,5 @@ export interface IOmicsVisualizationState {
   geneData: Gene[];
   selectedGene?: Gene;
   selectedGeneStats?: GeneStatisticsDto;
+  outliers: Gene[];
 }

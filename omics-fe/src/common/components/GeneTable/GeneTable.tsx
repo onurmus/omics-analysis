@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Col, Row, Table } from 'antd';
+import { Col, Divider, Row, Table } from 'antd';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { calculateGeneStats, setSelectedGene } from '../../../store/omics-visualization-slice';
 import { Gene, SampleExpressionValues } from '../../interfaces/gene';
@@ -51,6 +51,7 @@ const GeneTable = () => {
         <Col span={24}>{!!geneData.length && <Table rowKey='id' columns={columns} dataSource={geneData} />}</Col>
         <Col span={24}>{!!geneData.length && <GeneHeatmap></GeneHeatmap>}</Col>
       </Row>
+      <Divider />
       <Row className='custom-row'>{showChart && <GeneExpressionChart></GeneExpressionChart>} </Row>
       <Row>{showStatsModal && <StatsModal show={showStatsModal} handleClose={() => setShowStatsModal(false)}></StatsModal>}</Row>
     </>

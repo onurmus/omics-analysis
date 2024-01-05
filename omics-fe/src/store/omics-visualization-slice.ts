@@ -15,6 +15,7 @@ const initialState: IOmicsVisualizationState = {
   geneData: [],
   selectedGene: undefined,
   selectedGeneStats: undefined,
+  outliers: [],
 };
 
 export const getAllExperiments = createAsyncThunk('omicsVisualization/getAllExperiments', async () => {
@@ -47,6 +48,15 @@ export const getGeneData = createAsyncThunk('omicsVisualization/getGeneData', as
 export const calculateGeneStats = createAsyncThunk('omicsVisualization/calculateGeneStats', async (payload: any) => {
   try {
     const response = await axios.get(`${process.env.REACT_APP_BACKEND_ENDPOINT}/gene/stats/${payload.geneId}`);
+    return response.data;
+  } catch (error) {
+    Notification.error(error);
+  }
+});
+
+export const getOutliers = createAsyncThunk('omicsVisualization/getOutliers', async (payload: any) => {
+  try {
+    const response = await axios.get(`${process.env.REACT_APP_BACKEND_ENDPOINT}/gene/outliers/${payload.experimentId}/${payload.zThreshold}`);
     return response.data;
   } catch (error) {
     Notification.error(error);
@@ -155,6 +165,34 @@ export const omicsVisualizationSlice = createSlice({
 
     builder.addCase(calculateGeneStats.fulfilled, (state, action: PayloadAction<any>) => {
       state.selectedGeneStats = action.payload;
+      state.loading = false;
+    });
+
+    builder.addCase(getOutliers.pending, (state) => {
+      state.loading = true;
+      state.errors = null;
+    });
+
+    builder.addCase(getOutliers.rejected, (state, { error }: any) => {
+      state.loading = false;
+      state.errors = error;
+      Notification.error(
+        {
+          title: 'Getting Outliers Error',
+          message: error,
+        },
+        '',
+      );
+    });
+
+    builder.addCase(getOutliers.fulfilled, (state, action: PayloadAction<any>) => {
+      state.outliers = action.payload;
+      if (!state.outliers.length) {
+        Notification.warn({
+          title: 'No Outliers',
+          message: 'No outliers found',
+        });
+      }
       state.loading = false;
     });
   },

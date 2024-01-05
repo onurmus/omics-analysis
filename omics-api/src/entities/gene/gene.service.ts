@@ -38,6 +38,12 @@ export class GeneService {
     });
   }
 
+  async getGenesForExperiment(experimentId) {
+    return await this.geneRepository.find({
+      where: { experimentId },
+    });
+  }
+
   async getGenesByName(experimentId, nameList: string[]): Promise<Gene[]> {
     return await this.geneRepository.find({
       where: { experimentId, name: In(nameList) },
