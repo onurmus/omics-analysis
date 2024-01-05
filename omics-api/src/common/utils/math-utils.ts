@@ -16,10 +16,10 @@ export const calcMedian = (numberList: number[]) => {
 };
 
 export const calcVariance = (numberList: number[], meanValue?: number) => {
-  if (!numberList.length) return;
+  if (numberList.length < 1) return;
   meanValue = meanValue ?? calcMean(numberList);
   return (
     numberList.reduce((acc, val) => acc + Math.pow(val - meanValue, 2), 0) /
-    numberList.length
+    (numberList.length - 1)
   );
 };
