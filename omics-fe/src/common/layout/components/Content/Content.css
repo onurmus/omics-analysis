@@ -1,0 +1,37 @@
+.main-container {
+  height: 100% !important;
+  padding-top: 80px;
+  transition: all 0.2s;
+}
+
+.ant-layout-content {
+  height: 100%;
+  background: white;
+  overflow-y: scroll !important;
+}
+
+.page-container {
+  width: 100%;
+  min-height: 100%;
+  padding: 32px;
+  margin-bottom: -32px;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar:horizontal {
+  height: 8px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}

@@ -1,0 +1,21 @@
+version: "3.7"
+
+services:
+  omicsfe:
+    container_name: omicsfe
+    build:
+      context: .
+      target: development
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - ${REACT_APP_PORT}:3000
+    command: npm start
+    env_file:
+      - .env
+    networks:
+      - viascientific
+networks:
+  viascientific:
+    name: viascientific
